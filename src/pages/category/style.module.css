@@ -1,0 +1,19 @@
+.circleCat{
+    border-radius: 50%;
+    border: 1px solid white;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.mainDivWrapper{
+    /* background: linear-gradient(to right, #0a504a, #38ef7d); */
+    /* background-color: #086e85; */
+    background: linear-gradient(109.6deg, rgb(0, 37, 84) 11.2%, rgba(0, 37, 84, 0.32) 100.2%);
+    padding: 15px;
+    color: white;
+    height: 250px;
+    border-radius: 15px;
+
+}

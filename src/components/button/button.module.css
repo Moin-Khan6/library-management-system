@@ -1,0 +1,8 @@
+.btnApp{
+    background:#086e85!important;
+    color:white !important;
+}
+.btnApp:hover{
+  background:#086e85;
+  color:white;
+}

@@ -1,0 +1,17 @@
+.cardWrapper{
+    /* border: 1px solid black; */
+    /* padding: 25px; */
+    border-radius: 15px;
+
+}
+
+.btnStyle{
+    background-color: green;
+    color: white;
+    border-color:none!important;
+}
+.btnStyle:hover{
+    color: azure!important;
+    border-color:none!important;
+
+}
