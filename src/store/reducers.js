@@ -1,7 +1,9 @@
 import { combineReducers } from 'redux'
-import entitiesReducer from './entities'
+import bookSlice from './booksSlice'
+import newsPaperSlice from './newsPaperSlice'
 
 export default combineReducers({
-    entities : entitiesReducer
+    books : bookSlice,
+    newsPaper:newsPaperSlice
   })
 

@@ -2,7 +2,7 @@ import { Paper } from '@mui/material'
 import { Button } from 'antd'
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import { addCard } from '../../store/cartSlice'
+import { addCard } from '../../store/booksSlice'
 import styles from './style.module.css'
 
 function ItemsCard({data}) {

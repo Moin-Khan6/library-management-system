@@ -2,7 +2,7 @@ import {
     MenuFoldOutlined,
     MenuUnfoldOutlined,
     HomeOutlined,
-    VideoCameraOutlined,
+    SnippetsOutlined
   } from '@ant-design/icons';
   import { Layout, Menu, theme } from 'antd';
   import React, { useState } from 'react';
@@ -39,6 +39,11 @@ import {
                 key: '2',
                 icon: <LibraryBooksIcon />,
                 label: <Link style={{ color: 'inherit', textDecoration: 'inherit'}} to ='/books' >  Books </Link>,
+              },
+              {
+                key: '3',
+                icon: <SnippetsOutlined />,
+                label: <Link style={{ color: 'inherit', textDecoration: 'inherit'}} to ='/news-paper' >  News Paper </Link>,
               },
       
             ]}

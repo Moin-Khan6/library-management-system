@@ -10,7 +10,8 @@ import Button from "../../components/button/button";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 function Category() {
-  const storeBooks = useSelector((state) => state.entities.books.books);
+  const storeBooks = useSelector((state) => state.books.books);
+  const newsPaper = useSelector((state) => state.newsPaper.newsPaper);
 
   return (
     <div className="row">
@@ -31,6 +32,29 @@ function Category() {
                 Total Book {storeBooks.length}
               </Typography>
               <Link to='/books'>
+              <Button title="View Book List"></Button>
+              </Link>
+            </Stack>
+          </Stack>
+        </Paper>
+      </div>
+      <div className="col-12 col-md-4">
+        <Paper className={`text-white ${styles.mainDivWrapper}`}>
+          <Stack
+            direction="column"
+            justifyContent="left"
+            alignItems="left"
+            spacing={4}
+          >
+            <div className={`${styles.circleCat}`}>
+              <MenuBookIcon className="mb-1" />
+            </div>
+            <Typography variant="h6">NewsPapers List</Typography>
+            <Stack justifyContent={"space-between"} direction="row">
+              <Typography variant="h6" style={{color:'grey'}}>
+                Total NewsPapers {newsPaper.length}
+              </Typography>
+              <Link to='/news-paper'>
               <Button title="View Book List"></Button>
               </Link>
             </Stack>

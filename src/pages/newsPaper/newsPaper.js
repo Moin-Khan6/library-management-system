@@ -2,32 +2,22 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Button from "../../components/button/button";
 import Modal from "../../components/modal/modal";
-import { bookAdded, bookDeleted } from "../../store/booksSlice";
-import { modalField } from "../../utils/constants/modalField";
+import { newsPaperAdded ,newsPaperDeleted} from "../../store/newsPaperSlice";
+import { modalFieldNewsPaper ,newsPaperDefaultValues} from "../../utils/constants/modalField";
 import { Table } from "antd";
 import columns from '../../utils/constants/tableColumns'
 
-function Books() {
-  const [modalFields, setModalFields] = useState(modalField)
+function NewsPaper() {
+  const [modalFields, setModalFields] = useState(modalFieldNewsPaper)
   const dispatch = useDispatch()
   
   //**********Subscribe data from store *******/
-  const storeBooks = useSelector((state) => state.books.books);
+  const storeBooks = useSelector((state) => state.newsPaper.newsPaper);
   const [books, setBooks] = useState(storeBooks);
   const [selectedValue, setSelectedValue] = useState("");
   
   //******controlled Inputs default value set to empty**********/
-  const [booksObj, setBookObj] =useState({ title:"",
-  author:"",
-  publishedDate:"",
-  publisher:"",
-  language:"",
-  isbn:"",
-  description:"",
-  image:"",
-  price:"",
-  borrow:""
- })
+  const [booksObj, setBookObj] =useState(newsPaperDefaultValues)
 
   //******** Modal Hooks******/
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -38,18 +28,14 @@ function Books() {
   };
 
   const handleOk = () => {
-      // let {author,publishedDate,publisher,language,isbn,description,image,price,borrow} = booksObj;
-      // if(author.length < 2 || publishedDate.length < 2 ||publisher.length < 2 ||  language.length < 2 || isbn.length <2 || description.length < 2 || image.length < 2 || price.length <2  ){
-      //   return alert("Please Fill All fields")
-      // }
-      
     //****** validation if any field length less then 2 will not be accepted ************/
-      for(let item in booksObj){
-        if(booksObj[item].length <2 ){
-          return alert("Please Fill All fields")
-        }
+    for(let item in booksObj){
+      if(booksObj[item].length <2 ){
+        return alert("Please Fill All fields")
+
       }
-    dispatch(bookAdded(booksObj))
+    }
+    dispatch(newsPaperAdded(booksObj))
     setIsModalOpen(false);
   };
 
@@ -61,7 +47,7 @@ function Books() {
   const handleDropdownChange = (event) => {
     let filterDropDownValue =  event.target.value =="true" ? true : false; 
     setSelectedValue(event.target.value);
-    if (event.target.value == "allbooks") {
+    if (event.target.value == "allnewspaper") {
       setBooks([...storeBooks]);
       return;
     }
@@ -71,7 +57,7 @@ function Books() {
     setBooks([...filterBooks]);
   };
 
-  //**********Input Field onChange and save data intt bookObj*******/
+  //**********Input Field onChange and save data into bookObj*******/
   const handleBookOnChange =(value,title,index)=>{
     let valueSet = value;
     if(value =="true" || value =="false"){
@@ -95,7 +81,7 @@ function Books() {
   },[storeBooks])
 
   const handleDeleteClick = (record) => {
-    dispatch(bookDeleted(record._id))
+    dispatch(newsPaperDeleted(record._id))
   };
   return (
     <div>
@@ -110,16 +96,16 @@ function Books() {
             onChange={handleDropdownChange}
             value={selectedValue}
           >
-            <option value="allbooks">All Books</option>
+            <option value="allnewspaper">All NewsPapers</option>
             <option value={true}>Borrow</option>
             <option value={false}>In library</option>
           </select>
         </div>
       </div>
-      <Table  dataSource={books} columns ={columns(handleDeleteClick,"view-books")}  className="my-3"  />
+      <Table  dataSource={books} columns ={columns(handleDeleteClick,'view-news-paper')}  className="my-3"  />
       <Modal booksObj ={booksObj} handleBookOnChange ={handleBookOnChange} title ="Add Book"   isModalOpen ={isModalOpen} handleOk ={handleOk} handleCancel ={handleCancel} modalField ={modalFields}/>
     </div>
   );
 }
 
-export default Books;
+export default NewsPaper;

@@ -5,10 +5,10 @@ import { useLocation, useNavigate } from "react-router-dom";
 import Button from "../../components/button/button";
 import ItemsCard from "../../components/card/itemCard";
 import Input from "../../components/input/input";
-import { bookEdited } from "../../store/booksSlice";
+import { newsPaperEdited } from "../../store/newsPaperSlice";
 
 
-function Form() {
+function EditNewsPaper() {
   const dispatch = useDispatch()
   const navigate = useNavigate();
   const location = useLocation();
@@ -16,19 +16,22 @@ function Form() {
   const index = location.state.index;
 
   const [booksData, setBooksData] = useState({ ...data });
-  const [id,title , author, publishedDate, genre, publisher, language, isbn, description, image, price, borrow] = Object.keys(data);
+  const [id,title , author, publishedDate, genre, publisher, language, description, image, price,borrowBy, borrowDate,returnDate,borrow] = Object.keys(data);
   const [disabled, seDisabled] = useState(true)
 
 
   const editHandler = ()=>{
     seDisabled(false)
-    dispatch(bookEdited({booksData,index}))
+    dispatch(newsPaperEdited({booksData,index}))
     navigate('/books')
   }
+  console.log("data",data,index)
+
+  
 
   return (
     <div className="w-75 m-auto" >
-    <div className="row w-100 p-2" style={{  margin: "auto" }}>
+     <div className="row w-100 p-2" style={{  margin: "auto" }}>
       <div className="col-12 col-md-4">
       <ItemsCard data ={data}></ItemsCard>
       </div>
@@ -45,7 +48,7 @@ function Form() {
                 type="text"
               />
             </div>
-        <div className="col-12 col-md-4">
+        {/* <div className="col-12 col-md-4">
               <Input
                 value={booksData.author}
                 placeholder={author}
@@ -55,7 +58,7 @@ function Form() {
                 disabled ={disabled}
                 type="text"
               />
-            </div>
+            </div> */}
         <div className="col-12 col-md-4">
               <Input
                 value={booksData.publishedDate}
@@ -67,7 +70,7 @@ function Form() {
                 type="date"
               />
             </div>
-        <div className="col-12 col-md-4">
+        {/* <div className="col-12 col-md-4">
               <Input
                 value={booksData.genre}
                 placeholder={author}
@@ -77,7 +80,7 @@ function Form() {
                 disabled ={disabled}
                 type="text"
               />
-            </div>
+            </div> */}
         <div className=" col-12 col-md-4">
               <Input
                 value={booksData.publisher}
@@ -100,7 +103,7 @@ function Form() {
                 type="text"
               />
             </div>
-        <div className="col-12 col-md-4">
+         {/* <div className="col-12 col-md-4">
               <Input
                 value={booksData.isbn}
                 placeholder={isbn}
@@ -110,7 +113,7 @@ function Form() {
                 disabled ={disabled}
                 type="number"
               />
-            </div>
+            </div>  */}
         <div className="col-12 col-md-4">
               <Input
                 value={booksData.description}
@@ -162,10 +165,10 @@ function Form() {
     </div> 
       </div>
     </div>       
-    </div>
+    </div> 
   
             </div>
   );
 }
 
-export default Form;
+export default EditNewsPaper;
