@@ -16,10 +16,10 @@ const slice = createSlice({
       state.newsPaper = data;
     },
     newsPaperEdited:(state, action) => {
-      const {newsPaperData , index} = action.payload;
-      console.log("data user",newsPaperData)
+      const {booksData , index} = action.payload;
+      console.log("data user",booksData)
       console.log("index",index)
-      state.newsPaper[index] = newsPaperData;
+      state.newsPaper[index] = booksData;
     },
   },
 });

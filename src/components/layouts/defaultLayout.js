@@ -2,20 +2,39 @@ import {
     MenuFoldOutlined,
     MenuUnfoldOutlined,
     HomeOutlined,
-    SnippetsOutlined
+    SnippetsOutlined,
+    DatabaseOutlined
   } from '@ant-design/icons';
   import { Layout, Menu, theme } from 'antd';
-  import React, { useState } from 'react';
+  import React, { useEffect, useState } from 'react';
   import { Link } from 'react-router-dom';
   import '../../assets/css/layout.css'
   import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
 
 
-  
   const { Header, Sider, Content } = Layout;
 
   const DefaultLayout = ({children}) => {
     const [collapsed, setCollapsed] = useState(false);
+
+    useEffect(() => {
+     
+      const handleResize = () => {
+        if (window.innerWidth < 768) { 
+          setCollapsed(true);
+        } else {
+          setCollapsed(false);
+        }
+      };
+  
+      handleResize();
+      window.addEventListener('resize', handleResize);
+  
+      return () => {
+        window.removeEventListener('resize', handleResize);
+      };
+    }, []);
+
     const {
       token: { colorBgContainer },
     } = theme.useToken();
@@ -44,6 +63,11 @@ import {
                 key: '3',
                 icon: <SnippetsOutlined />,
                 label: <Link style={{ color: 'inherit', textDecoration: 'inherit'}} to ='/news-paper' >  News Paper </Link>,
+              },
+              {
+                key: '4',
+                icon: <DatabaseOutlined />,
+                label: <Link style={{ color: 'inherit', textDecoration: 'inherit'}} to ='/docuementories' >  docuementories </Link>,
               },
       
             ]}

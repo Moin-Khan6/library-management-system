@@ -7,6 +7,8 @@ import Category from "./category/category";
 import EditBook from "./editBook/editBook";
 import NewsPaper from "./newsPaper/newsPaper";
 import EditNewsPaper from './editNewsPaper/editNewsPaper'
+import Documentories from "./documentaries/documentaries";
+import EditDocumentories from "./editDocumentories/editDocumentories";
 
 function Dashboard() {
   return (
@@ -17,6 +19,8 @@ function Dashboard() {
             <Route path="/view-books" element={<EditBook />}  />
             <Route path="/news-paper" element={<NewsPaper />}  />
             <Route path="/view-news-paper" element={<EditNewsPaper />}  />
+            <Route path="/docuementories" element={<Documentories />}  />
+            <Route path="/view-docuementories" element={<EditDocumentories />}  />
         </Routes>
     </DefaultLayout>
   );

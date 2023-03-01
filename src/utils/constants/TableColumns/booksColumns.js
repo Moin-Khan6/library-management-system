@@ -36,7 +36,7 @@ const columns = (handleIconClick,path) => [
             <Link to= {`/${path}`} state ={{record:record,index:index}}
              >
           <Button  variant="contained"  endIcon={<FundViewOutlined />}>
-           View More 
+           View  
         </Button>
             </Link>
         ),

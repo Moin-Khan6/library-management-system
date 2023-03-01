@@ -8,10 +8,16 @@
     justify-content: center;
 }
 .mainDivWrapper{
+    /* background: linear-gradient(to right, #0a504a, #38ef7d); */
+    /* background-color: #086e85; */
     background: linear-gradient(109.6deg, rgb(0, 37, 84) 11.2%, rgba(0, 37, 84, 0.32) 100.2%);
     padding: 15px;
     color: white;
     height: 250px;
     border-radius: 15px;
-
+    cursor: pointer;
+}
+.mainDivWrapper:hover{
+    /* background: radial-gradient(590px at 8.2% 13.8%, rgb(18, 35, 60) 0%, rgb(187, 187, 187) 90%); */
+    background: linear-gradient(68.3deg, rgb(23, 41, 77) 6.3%, rgb(243, 113, 154) 90.9%);
 }

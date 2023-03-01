@@ -23,7 +23,6 @@ export const modalField = [
 
 
 //*********News Paper Structure ***********/
-
 export const newsPaperDefaultValues ={
   title: "",
   publishedDate: "",

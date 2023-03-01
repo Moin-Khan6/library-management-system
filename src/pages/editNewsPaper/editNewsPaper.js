@@ -16,18 +16,15 @@ function EditNewsPaper() {
   const index = location.state.index;
 
   const [booksData, setBooksData] = useState({ ...data });
-  const [id,title , author, publishedDate, genre, publisher, language, description, image, price,borrowBy, borrowDate,returnDate,borrow] = Object.keys(data);
+  const [_id ,title , publishedDate, publisher, language, description, image, price,borrowBy, borrowDate,returnDate,borrow] = Object.keys(data);         
   const [disabled, seDisabled] = useState(true)
 
 
   const editHandler = ()=>{
     seDisabled(false)
     dispatch(newsPaperEdited({booksData,index}))
-    navigate('/books')
+    navigate('/news-paper')
   }
-  console.log("data",data,index)
-
-  
 
   return (
     <div className="w-75 m-auto" >
@@ -62,7 +59,7 @@ function EditNewsPaper() {
         <div className="col-12 col-md-4">
               <Input
                 value={booksData.publishedDate}
-                placeholder={author}
+                placeholder={publishedDate}
                 onChange={(e)=>{setBooksData({...booksData, publishedDate:e.target.value})}}
                 name={"data"}
                 title={publishedDate}
@@ -84,7 +81,7 @@ function EditNewsPaper() {
         <div className=" col-12 col-md-4">
               <Input
                 value={booksData.publisher}
-                placeholder={author}
+                placeholder={publisher}
                 onChange={(e)=>{setBooksData({...booksData, publisher:e.target.value})}}
                 name={"data"}
                 title={publisher}
@@ -95,7 +92,7 @@ function EditNewsPaper() {
         <div className="col-12 col-md-4">
               <Input
                 value={booksData.language}
-                placeholder={author}
+                placeholder={language}
                 onChange={(e)=>{setBooksData({...booksData, language:e.target.value})}}
                 name={"data"}
                 title={language}
@@ -117,7 +114,7 @@ function EditNewsPaper() {
         <div className="col-12 col-md-4">
               <Input
                 value={booksData.description}
-                placeholder={author}
+                placeholder={description}
                 onChange={(e)=>{setBooksData({...booksData, description:e.target.value})}}
                 name={"data"}
                 title={description}
@@ -128,7 +125,7 @@ function EditNewsPaper() {
         <div className="col-12 col-md-4">
               <Input
                 value={booksData.image}
-                placeholder={author}
+                placeholder={"Image Url"}
                 onChange={(e)=>{setBooksData({...booksData, image:e.target.value})}}
                 name={"data"}
                 title={image}
@@ -139,7 +136,7 @@ function EditNewsPaper() {
         <div className="col-12 col-md-4">
               <Input
                 value={booksData.price}
-                placeholder={author}
+                placeholder={price}
                 onChange={(e)=>{setBooksData({...booksData, price:e.target.value})}}
                 name={"data"}
                 title={price}
@@ -147,6 +144,39 @@ function EditNewsPaper() {
                 type="number"
               />
             </div>
+         <div className="col-12 col-md-4">
+              <Input
+                value={booksData.borrowBy}
+                placeholder={borrowBy}
+                onChange={(e)=>{setBooksData({...booksData, borrowBy:e.target.value})}}
+                name={"data"}
+                title={borrowBy}
+                disabled ={disabled}
+                type="text"
+              />
+            </div> 
+         <div className="col-12 col-md-4">
+              <Input
+                value={booksData.borrowDate}
+                placeholder={borrowDate}
+                onChange={(e)=>{setBooksData({...booksData, borrowDate:e.target.value})}}
+                name={"data"}
+                title={borrowDate}
+                disabled ={disabled}
+                type="date"
+              />
+            </div> 
+         <div className="col-12 col-md-4">
+              <Input
+                value={booksData.returnDate}
+                placeholder={returnDate}
+                onChange={(e)=>{setBooksData({...booksData, returnDate:e.target.value})}}
+                name={"data"}
+                title={returnDate}
+                disabled ={disabled}
+                type="date"
+              />
+            </div> 
         <div className="col-12 col-md-2">
           <div className="my-4">
               <label>Borrow</label>

@@ -27,14 +27,14 @@ function Form() {
   }
 
   return (
-    <div className="w-75 m-auto" >
-    <div className="row w-100 p-2" style={{  margin: "auto" }}>
-      <div className="col-12 col-md-4">
+    <div className="w-100 m-auto" >
+    <div className="row w-100 " style={{  margin: "auto" }}>
+      <div className="col-12 col-md-3 d-none d-sm-block">
       <ItemsCard data ={data}></ItemsCard>
       </div>
     <div className="col-12 col-md-8">
         <div className="row">   
-        <div className="col-12 col-md-4">
+        <div className="col-6 col-md-4">
               <Input
                 value={booksData.title}
                 placeholder={title}
@@ -45,7 +45,7 @@ function Form() {
                 type="text"
               />
             </div>
-        <div className="col-12 col-md-4">
+        <div className="col-6 col-md-4">
               <Input
                 value={booksData.author}
                 placeholder={author}
@@ -56,7 +56,7 @@ function Form() {
                 type="text"
               />
             </div>
-        <div className="col-12 col-md-4">
+        <div className="col-6 col-md-4">
               <Input
                 value={booksData.publishedDate}
                 placeholder={author}
@@ -67,7 +67,7 @@ function Form() {
                 type="date"
               />
             </div>
-        <div className="col-12 col-md-4">
+        <div className="col-6 col-md-4">
               <Input
                 value={booksData.genre}
                 placeholder={author}
@@ -78,7 +78,7 @@ function Form() {
                 type="text"
               />
             </div>
-        <div className=" col-12 col-md-4">
+        <div className=" col-6 col-md-4">
               <Input
                 value={booksData.publisher}
                 placeholder={author}
@@ -89,7 +89,7 @@ function Form() {
                 type="text"
               />
             </div>
-        <div className="col-12 col-md-4">
+        <div className="col-6 col-md-4">
               <Input
                 value={booksData.language}
                 placeholder={author}
@@ -100,7 +100,7 @@ function Form() {
                 type="text"
               />
             </div>
-        <div className="col-12 col-md-4">
+        <div className="col-6 col-md-4">
               <Input
                 value={booksData.isbn}
                 placeholder={isbn}
@@ -111,7 +111,7 @@ function Form() {
                 type="number"
               />
             </div>
-        <div className="col-12 col-md-4">
+        <div className="col-6 col-md-4">
               <Input
                 value={booksData.description}
                 placeholder={author}
@@ -122,7 +122,7 @@ function Form() {
                 type="text"
               />
             </div>
-        <div className="col-12 col-md-4">
+        <div className="col-6 col-md-4">
               <Input
                 value={booksData.image}
                 placeholder={author}
@@ -133,7 +133,7 @@ function Form() {
                 type="text"
               />
             </div>
-        <div className="col-12 col-md-4">
+        <div className="col-6 col-md-4">
               <Input
                 value={booksData.price}
                 placeholder={author}
@@ -144,7 +144,7 @@ function Form() {
                 type="number"
               />
             </div>
-        <div className="col-12 col-md-2">
+        <div className="col-6 col-md-2">
           <div className="my-4">
               <label>Borrow</label>
                   <Checkbox

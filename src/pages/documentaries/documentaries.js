@@ -3,28 +3,25 @@ import { useDispatch, useSelector } from "react-redux";
 import Button from "../../components/button/button";
 import Modal from "../../components/modal/modal";
 import { newsPaperAdded ,newsPaperDeleted} from "../../store/newsPaperSlice";
-import { modalFieldNewsPaper ,newsPaperDefaultValues} from "../../utils/constants/modalField";
 import { Table } from "antd";
-import columns from '../../utils/constants/TableColumns/newspaperColumns'
+import columns from '../../utils/constants/TableColumns/docuementoriesColumns'
+import { documentoriesDefaultValues, documentoriesModalFiedls } from "../../utils/constants/modalFields/documentoriesModalFields";
+import { documentoriesAdded, documentoriesDeleted } from "../../store/documentoriesSlice";
 import { ToastContainer, toast } from 'react-toastify';
 
 
-function NewsPaper() {
-  const [modalFields, setModalFields] = useState(modalFieldNewsPaper)
+function Documentories() {
+  const [modalFields, setModalFields] = useState(documentoriesModalFiedls)
   const dispatch = useDispatch()
-
-
   
   //**********Subscribe data from store *******/
-  const storeBooks = useSelector((state) => state.newsPaper.newsPaper);
+  const storeBooks = useSelector((state) => state.documentories.documentories);
+
   const [books, setBooks] = useState(storeBooks);
   const [selectedValue, setSelectedValue] = useState("");
   
   //******controlled Inputs default value set to empty**********/
-  const [booksObj, setBookObj] =useState(newsPaperDefaultValues)
-
- //**********Toaster Function ***********/
-  const notify = () => toast("Book Add Successfully!");
+  const [booksObj, setBookObj] =useState(documentoriesDefaultValues)
 
   //******** Modal Hooks******/
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -34,6 +31,8 @@ function NewsPaper() {
     setIsModalOpen(true);
   };
 
+  const notify = () => toast("Document Add Successfully!");
+
   const handleOk = () => {
     //****** validation if any field length less then 2 will not be accepted ************/
     for(let item in booksObj){
@@ -42,10 +41,10 @@ function NewsPaper() {
 
       }
     }
-    dispatch(newsPaperAdded(booksObj))
+    dispatch(documentoriesAdded(booksObj))
     setIsModalOpen(false);
     notify()
-    setBookObj(newsPaperDefaultValues)
+    setBookObj(documentoriesDefaultValues)
   };
 
   const handleCancel = () => {
@@ -90,18 +89,17 @@ function NewsPaper() {
   },[storeBooks])
 
   const handleDeleteClick = (record) => {
-    dispatch(newsPaperDeleted(record._id))
+    dispatch(documentoriesDeleted(record._id))
   };
   return (
     <div>
-       <div className="logo  d-flex justify-content-left align-items-center ">
-            <h3  >NEWSPAPERS </h3>
+        <div className="logo  d-flex justify-content-left align-items-center ">
+            <h3>DOCUMENTORIES</h3>
           </div>
       <div className="d-flex justify-content-between w-100 my-3 ">
         <div>
           <Button title={"Add Books"} onClick={showModal} />
         </div>
-       
         <div>
           <select
             className="form-select"
@@ -109,7 +107,7 @@ function NewsPaper() {
             onChange={handleDropdownChange}
             value={selectedValue}
           >
-            <option value="allnewspaper">All NewsPapers</option>
+            <option value="allnewspaper">All Documentories</option>
             <option value={true}>Borrow</option>
             <option value={false}>In library</option>
           </select>
@@ -126,10 +124,11 @@ function NewsPaper() {
       draggable
       pauseOnHover
       theme="light" />
-      <Table   dataSource={books} columns ={columns(handleDeleteClick,'view-news-paper')}  className="my-3"  scroll={{ x: true }}  />
+
+      <Table   dataSource={books} columns ={columns(handleDeleteClick,'view-docuementories')}  className="my-3"  scroll={{ x: true }}  />
       <Modal booksObj ={booksObj} handleBookOnChange ={handleBookOnChange} title ="Add Book"   isModalOpen ={isModalOpen} handleOk ={handleOk} handleCancel ={handleCancel} modalField ={modalFields}/>
     </div>
   );
 }
 
-export default NewsPaper;
+export default Documentories;

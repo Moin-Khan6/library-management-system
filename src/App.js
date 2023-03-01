@@ -1,4 +1,6 @@
 import Routing from './config/router/router';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 function App() {
   return (

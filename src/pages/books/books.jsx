@@ -5,7 +5,12 @@ import Modal from "../../components/modal/modal";
 import { bookAdded, bookDeleted } from "../../store/booksSlice";
 import { modalField } from "../../utils/constants/modalField";
 import { Table } from "antd";
-import columns from '../../utils/constants/tableColumns'
+import columns from '../../utils/constants/TableColumns/booksColumns'
+import { ToastContainer, toast } from 'react-toastify';
+import { booksDefaultValues } from "../../utils/constants/modalFields/documentoriesModalFields";
+
+
+
 
 function Books() {
   const [modalFields, setModalFields] = useState(modalField)
@@ -17,17 +22,11 @@ function Books() {
   const [selectedValue, setSelectedValue] = useState("");
   
   //******controlled Inputs default value set to empty**********/
-  const [booksObj, setBookObj] =useState({ title:"",
-  author:"",
-  publishedDate:"",
-  publisher:"",
-  language:"",
-  isbn:"",
-  description:"",
-  image:"",
-  price:"",
-  borrow:""
- })
+  const [booksObj, setBookObj] =useState(booksDefaultValues)
+
+  //**********Toaster Function ***********/
+  const notify = () => toast("Book Add Successfully!");
+  const isbnNotify = () => toast("Isbn Is same");
 
   //******** Modal Hooks******/
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -37,20 +36,23 @@ function Books() {
     setIsModalOpen(true);
   };
 
-  const handleOk = () => {
-      // let {author,publishedDate,publisher,language,isbn,description,image,price,borrow} = booksObj;
-      // if(author.length < 2 || publishedDate.length < 2 ||publisher.length < 2 ||  language.length < 2 || isbn.length <2 || description.length < 2 || image.length < 2 || price.length <2  ){
-      //   return alert("Please Fill All fields")
-      // }
-      
+  const handleOk = () => {    
     //****** validation if any field length less then 2 will not be accepted ************/
       for(let item in booksObj){
         if(booksObj[item].length <2 ){
           return alert("Please Fill All fields")
         }
       }
+      let findIsbn = storeBooks.find(item => item.isbn == booksObj.isbn)
+      if(findIsbn){
+        isbnNotify()
+        return 
+      }
+      
     dispatch(bookAdded(booksObj))
     setIsModalOpen(false);
+    notify()
+    setBookObj(booksDefaultValues)
   };
 
   const handleCancel = () => {
@@ -97,12 +99,18 @@ function Books() {
   const handleDeleteClick = (record) => {
     dispatch(bookDeleted(record._id))
   };
+ 
+
   return (
     <div>
-      <div className="d-flex justify-content-between">
+      <div className="logo  d-flex justify-content-left align-items-center ">
+            <h3  >BOOKS </h3>
+          </div>
+      <div className="d-flex justify-content-between my-3">
         <div>
           <Button title={"Add Books"} onClick={showModal} />
         </div>
+        
         <div>
           <select
             className="form-select"
@@ -116,7 +124,18 @@ function Books() {
           </select>
         </div>
       </div>
-      <Table  dataSource={books} columns ={columns(handleDeleteClick,"view-books")}  className="my-3"  />
+      <ToastContainer
+      position="top-right"
+      autoClose={1000}
+      hideProgressBar={false}
+      newestOnTop={false}
+      closeOnClick
+      rtl={false}
+      pauseOnFocusLoss
+      draggable
+      pauseOnHover
+      theme="light" />
+      <Table  scroll={{ x: true }}  dataSource={books} columns ={columns(handleDeleteClick,"view-books")}  className="my-3"  />
       <Modal booksObj ={booksObj} handleBookOnChange ={handleBookOnChange} title ="Add Book"   isModalOpen ={isModalOpen} handleOk ={handleOk} handleCancel ={handleCancel} modalField ={modalFields}/>
     </div>
   );
