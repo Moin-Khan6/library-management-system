@@ -32,8 +32,8 @@ function EditDocumentories() {
 
   return (
     <div className="w-75 m-auto" >
-     <div className="row w-100 p-2" style={{  margin: "auto" }}>
-      <div className="col-12 col-md-4">
+     <div className="row w-100 p-2">
+      <div className="col-12 col-md-4 d-none d-sm-block">
       <ItemsCard data ={data}></ItemsCard>
       </div>
     <div className="col-12 col-md-8">
