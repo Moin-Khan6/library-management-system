@@ -38,3 +38,11 @@
     background-color: #086e85!important;
 }
 
+
+@media screen and (max-width: 600px) {
+  .ant-layout-has-sider{
+    padding:15px;
+    height: auto;
+  }
+}
+

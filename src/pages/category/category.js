@@ -9,7 +9,7 @@ function Category() {
 
   return (
     <div className="row">
-      <div className="col-6 col-md-4 my-3">
+      <div className="col-12 col-md-4 my-3">
         <CategoryCard
           title={"Book List"}
           count={`Total Books ${storeBooks.length}`}
@@ -17,7 +17,7 @@ function Category() {
           path={"/books"}
         />
       </div>
-      <div className="col-6 col-md-4 my-3">
+      <div className="col-12 col-md-4 my-3">
         <CategoryCard
           title={"NewsPapers List"}
           count={`Total NewsPapers ${newsPaper.length}`}
