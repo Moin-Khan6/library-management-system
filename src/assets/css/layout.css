@@ -44,5 +44,11 @@
     padding:15px;
     height: auto;
   }
+  .logo h3{
+    color: #086e85;
+    text-align: center;
+    font-size: 16px;
+  }
+  
 }
 

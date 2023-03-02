@@ -27,7 +27,7 @@ function EditDocumentories() {
     console.log("dat")
     seDisabled(false)
     dispatch(documentoriesEdited({booksData,index}))
-    navigate('/docuementories')
+    navigate('/dash-board/docuementories')
   }
 
   return (

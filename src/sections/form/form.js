@@ -23,7 +23,7 @@ function Form() {
   const editHandler = ()=>{
     seDisabled(false)
     dispatch(bookEdited({booksData,index}))
-    navigate('/books')
+    navigate('/dash-board/books')
   }
 
   return (

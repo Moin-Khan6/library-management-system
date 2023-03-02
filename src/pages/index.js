@@ -16,11 +16,11 @@ function Dashboard() {
         <Routes>
             <Route path="/" element={<Category/>}  />
             <Route path="/books" element={<Books/>}  />
-            <Route path="/view-books" element={<EditBook />}  />
+            <Route path="/books/view-books" element={<EditBook />}  />
             <Route path="/news-paper" element={<NewsPaper />}  />
-            <Route path="/view-news-paper" element={<EditNewsPaper />}  />
+            <Route path="/news-paper/view-news-paper" element={<EditNewsPaper />}  />
             <Route path="/docuementories" element={<Documentories />}  />
-            <Route path="/view-docuementories" element={<EditDocumentories />}  />
+            <Route path="/docuementories/view-docuementories" element={<EditDocumentories />}  />
         </Routes>
     </DefaultLayout>
   );

@@ -33,7 +33,7 @@ const columns = (handleIconClick,path) => [
       {
         title: "Details",
         render: (text,record,index) => (
-            <Link to= {`/${path}`} state ={{record:record,index:index}}
+            <Link to= {`${path}`} state ={{record:record,index:index}}
              >
           <Button  variant="contained"  endIcon={<FundViewOutlined />}>
            View  

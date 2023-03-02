@@ -10,12 +10,22 @@ import {
   import { Link } from 'react-router-dom';
   import '../../assets/css/layout.css'
   import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
+import { FormControlLabel, FormGroup, Switch } from '@mui/material';
+import LogoutIcon from '@mui/icons-material/Logout';
+import { useDispatch } from 'react-redux';
+import { signOutValidUser } from '../../store/authSlice';
 
 
   const { Header, Sider, Content } = Layout;
 
   const DefaultLayout = ({children}) => {
+    const dispatch = useDispatch()
     const [collapsed, setCollapsed] = useState(false);
+    const handleLogoutClick = () => {
+      // Handle logout click
+      dispatch(signOutValidUser())
+      console.log('Logout clicked');
+    };
 
     useEffect(() => {
      
@@ -52,22 +62,27 @@ import {
               {
                 key: '1',
                 icon:  <HomeOutlined />,
-                label: <Link style={{ color: 'inherit', textDecoration: 'inherit'}} to ='/'> Dashboard </Link>,
+                label: <Link style={{ color: 'inherit', textDecoration: 'inherit'}} to ='/dash-board'> Dashboard </Link>,
               },
               {
                 key: '2',
                 icon: <LibraryBooksIcon />,
-                label: <Link style={{ color: 'inherit', textDecoration: 'inherit'}} to ='/books' >  Books </Link>,
+                label: <Link style={{ color: 'inherit', textDecoration: 'inherit'}} to ='books' >  Books </Link>,
               },
               {
                 key: '3',
                 icon: <SnippetsOutlined />,
-                label: <Link style={{ color: 'inherit', textDecoration: 'inherit'}} to ='/news-paper' >  News Paper </Link>,
+                label: <Link style={{ color: 'inherit', textDecoration: 'inherit'}} to ='news-paper' >  News Paper </Link>,
               },
               {
                 key: '4',
                 icon: <DatabaseOutlined />,
-                label: <Link style={{ color: 'inherit', textDecoration: 'inherit'}} to ='/docuementories' >  docuementories </Link>,
+                label: <Link style={{ color: 'inherit', textDecoration: 'inherit'}} to ='docuementories' >  docuementories </Link>,
+              },
+              {
+                key: '5',
+                icon: <LogoutIcon />,
+                label: <Link style={{ color: 'inherit', textDecoration: 'inherit'}} to ='/'   onClick={handleLogoutClick} >  Logout </Link>,
               },
       
             ]}
@@ -85,15 +100,19 @@ import {
           >
             
            <div className='d-flex justify-content-between'>
-                <div>
+           <div>
                     {React.createElement(collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {
                       className: 'trigger',
                       onClick: () => setCollapsed(!collapsed),
                     })}
               </div>
-              <div className="logo w-100 d-flex justify-content-center align-items-center ">
-            <h3  >Library Management System</h3>
+              
+              <div className="logo w-100 d-flex justify-content-around align-items-center ">
+           
+            <h3 className='ms-2 my-3'>Library Management App</h3>
+       
           </div>
+     
             </div>
           </Header>
           <Content

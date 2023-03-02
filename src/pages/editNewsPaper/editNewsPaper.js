@@ -23,7 +23,7 @@ function EditNewsPaper() {
   const editHandler = ()=>{
     seDisabled(false)
     dispatch(newsPaperEdited({booksData,index}))
-    navigate('/news-paper')
+    navigate('/dash-board/news-paper')
   }
 
   return (

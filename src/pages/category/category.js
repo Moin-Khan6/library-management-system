@@ -14,7 +14,7 @@ function Category() {
           title={"Book List"}
           count={`Total Books ${storeBooks.length}`}
           btnTitle={"View Book List"}
-          path={"/books"}
+          path={"books"}
         />
       </div>
       <div className="col-12 col-md-4 my-3">
@@ -22,7 +22,7 @@ function Category() {
           title={"NewsPapers List"}
           count={`Total NewsPapers ${newsPaper.length}`}
           btnTitle={"View Book List"}
-          path={"/news-paper"}
+          path={"news-paper"}
         />
       </div>
       <div className="col-12 col-md-4 my-3 ">
@@ -30,7 +30,7 @@ function Category() {
           title={"Documentories List"}
           count={`Total NewsPapers ${documentories.length}`}
           btnTitle={"View Book List"}
-          path={"/docuementories"}
+          path={"docuementories"}
         />
       </div>
     </div>
