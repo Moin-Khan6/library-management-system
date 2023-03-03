@@ -32,12 +32,6 @@ function NewsPaper() {
   };
 
   const handleOk = () => {
-    //****** validation if any field length less then 2 will not be accepted ************/
-    for (let item in newsPaperObj) {
-      if (newsPaperObj[item].length < 2) {
-        return toastError("Please Fill All Fields");
-      }
-    }
     dispatch(newsPaperAdded(newsPaperObj));
     setIsModalOpen(false);
     setNewsPaperObj(newsPaperDefaultValues);

@@ -40,12 +40,6 @@ function Documentories() {
   };
 
   const handleOk = () => {
-    //****** validation if any field length less then 2 will not be accepted ************/
-    for (let item in documentoriesObj) {
-      if (documentoriesObj[item].length < 2) {
-        return toastError("Please Fill All Fields");
-      }
-    }
     dispatch(documentoriesAdded(documentoriesObj));
     setIsModalOpen(false);
     setDocumentoriesObj(documentoriesDefaultValues);

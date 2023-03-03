@@ -34,12 +34,6 @@ function Books() {
 
   //*******Add Book *********/
   const handleOk = () => {
-    //****** validation if any field length less then 2 will not be accepted ************/
-    for (let item in booksObj) {
-      if (booksObj[item].length < 2) {
-        return toastError("Please Fill All Fields");
-      }
-    }
     let findIsbn = storeBooks.find((item) => item.isbn == booksObj.isbn);
     if (findIsbn) {
       toastError("Isbn Already Exist");

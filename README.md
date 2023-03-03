@@ -10,6 +10,8 @@ npm install
 
 ```
 For Testing
+npm start
+
 email: admin@gmail.com
 password: 11223344
 ```
