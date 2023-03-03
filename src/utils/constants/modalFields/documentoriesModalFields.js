@@ -9,18 +9,6 @@ export const documentoriesDefaultValues ={
     genre: "",
     borrow:true
   }
-export const booksDefaultValues ={ 
-  title:"",
-  author:"",
-  publishedDate:"",
-  publisher:"",
-  language:"",
-  isbn:"",
-  description:"",
-  image:"",
-  price:"",
-  borrow:""
-}
 
 export const documentoriesModalFiedls = [
     { title: "title", type: "text",status:"" },

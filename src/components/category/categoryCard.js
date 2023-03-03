@@ -9,7 +9,7 @@ import styles from "./style.module.css";
 import Button from "../button/button";
 import { Link, useNavigate } from "react-router-dom";
 
-function CategoryCard({title,count,btnTitle,path}) {
+function CategoryCard({title,count,btnTitle,path,icon}) {
   const navigate = useNavigate()
   return (
     <Paper className={`text-white ${styles.mainDivWrapper}`}  onClick ={()=>{navigate(path)}}   >
@@ -20,16 +20,14 @@ function CategoryCard({title,count,btnTitle,path}) {
             spacing={4}
           >
             <div className={`${styles.circleCat}`}>
-              <MenuBookIcon className="mb-1" />
+             {icon}
             </div>
             <Typography variant="h6">{title}</Typography>
             <Stack justifyContent={"space-between"} direction="row">
               <Typography variant="h6" style={{color:'grey'}}>
                 {count}
               </Typography>
-              {/* <Link to={path}>
-              <Button title={btnTitle}></Button>
-              </Link> */}
+             
             </Stack>
           </Stack>
         </Paper>  )

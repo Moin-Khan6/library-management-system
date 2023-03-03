@@ -2,18 +2,17 @@ import {
     MenuFoldOutlined,
     MenuUnfoldOutlined,
     HomeOutlined,
-    SnippetsOutlined,
-    DatabaseOutlined
   } from '@ant-design/icons';
   import { Layout, Menu, theme } from 'antd';
   import React, { useEffect, useState } from 'react';
   import { Link } from 'react-router-dom';
   import '../../assets/css/layout.css'
   import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
-import { FormControlLabel, FormGroup, Switch } from '@mui/material';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { useDispatch } from 'react-redux';
 import { signOutValidUser } from '../../store/authSlice';
+import FiberNewIcon from '@mui/icons-material/FiberNew';
+import ArticleIcon from '@mui/icons-material/Article';
 
 
   const { Header, Sider, Content } = Layout;
@@ -69,21 +68,21 @@ import { signOutValidUser } from '../../store/authSlice';
               {
                 key: '1',
                 icon:  <HomeOutlined />,
-                label: <Link style={{ color: 'inherit', textDecoration: 'inherit'}} to ='/dash-board'> Dashboard </Link>,
+                label: <Link style={{ color: 'inherit', textDecoration: 'inherit'}} to ='/dash-board'>Dashboard </Link>,
               },
               {
                 key: '2',
-                icon: <LibraryBooksIcon />,
+                icon: <LibraryBooksIcon  />,
                 label: <Link style={{ color: 'inherit', textDecoration: 'inherit'}} to ='books' >  Books </Link>,
               },
               {
                 key: '3',
-                icon: <SnippetsOutlined />,
+                icon: <FiberNewIcon  />,
                 label: <Link style={{ color: 'inherit', textDecoration: 'inherit'}} to ='news-paper' >  News Paper </Link>,
               },
               {
                 key: '4',
-                icon: <DatabaseOutlined />,
+                icon: <ArticleIcon />,
                 label: <Link style={{ color: 'inherit', textDecoration: 'inherit'}} to ='docuementories' >  docuementories </Link>,
               },
               {
