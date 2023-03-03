@@ -8,7 +8,7 @@ import firebaseMethods from '../../config/firebase/firebaseMethods'
 import { signInvalidUser } from '../../store/authSlice'
 import ProgressCircular from '../../components/circularProgress'
 import { ToastContainer } from 'react-toastify';
-import { toastMsg } from "../../utils/helper";
+import {  toastError, toastInfo, toastSuccess } from "../../utils/helper";
 
 
 
@@ -36,9 +36,10 @@ function SignIn() {
     SignInPromise.then((resolve) =>{
             dispatch(signInvalidUser())
             setValidUser(true)
-            setLoader(false)}).catch((fail)=>{           
+            setLoader(false)
+          }).catch((fail)=>{       
+            toastError("Bad User Credentials")
                     setLoader(false)})
-                    // toastMsg("Sign Up Please")
   }
   
     const SingUpPage = () =>{

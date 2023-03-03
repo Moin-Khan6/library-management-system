@@ -21,6 +21,9 @@ import { signOutValidUser } from '../../store/authSlice';
   const DefaultLayout = ({children}) => {
     const dispatch = useDispatch()
     const [collapsed, setCollapsed] = useState(false);
+    const [isLoaded, setIsLoaded] = useState(false);
+
+   
     const handleLogoutClick = () => {
       // Handle logout click
       dispatch(signOutValidUser())
@@ -45,11 +48,15 @@ import { signOutValidUser } from '../../store/authSlice';
       };
     }, []);
 
+    useEffect(() => {
+      setIsLoaded(true);
+    }, []);
+
     const {
       token: { colorBgContainer },
     } = theme.useToken();
     return (
-      <Layout>
+      <Layout className={`default-layout ${isLoaded ? 'loaded' : ''}`}>
         <Sider trigger={null} collapsible collapsed={collapsed}>
           <div className="logo">
             <h3 >LMS</h3>

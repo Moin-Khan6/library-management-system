@@ -37,7 +37,15 @@
 .ant-menu-item-selected{
     background-color: #086e85!important;
 }
+.default-layout {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
 
+  
+}
+.loaded {
+  opacity: 1;
+}
 
 @media screen and (max-width: 600px) {
   .ant-layout-has-sider{

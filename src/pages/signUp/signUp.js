@@ -1,16 +1,23 @@
 import { Box, Grid, Stack, Typography } from "@mui/material";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import InputField from "../../components/input/input";
 import firebaseMethods from "../../config/firebase/firebaseMethods";
 import Button from "../../components/button/button";
 import ProgressCircular from "../../components/circularProgress";
 import { ToastContainer } from 'react-toastify';
-import { toastMsg } from "../../utils/helper";
+import { toastError } from "../../utils/helper";
+import { signInvalidUser } from "../../store/authSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 function SignUp() {
+  const dispatch =  useDispatch()
+
   const [signUpData, setSignUpData] = useState({});
   const [loader, setLoader] = useState(false)
+
+  const auth = useSelector((state) => state.auth.auth)
+
 
 
   const navigate = useNavigate();
@@ -34,18 +41,37 @@ function SignUp() {
     signUp
       .then((success) => {
         setLoader(false)
+        dispatch(signInvalidUser())
 
-        navigate("/");
+        // navigate("/");
       })
       .catch((failure) => {
         setLoader(false)
-        toastMsg("User Already Present")
-
-        console.log(failure);
+        toastError("User Already Present")
       });
   };
+
+  useEffect(()=>{
+    if(auth){
+      navigate('/dash-board')
+    }
+  })
+
+
+
   return (
     <Grid container>
+          <ToastContainer
+      position="top-right"
+      autoClose={1000}
+      hideProgressBar={false}
+      newestOnTop={false}
+      closeOnClick
+      rtl={false}
+      pauseOnFocusLoss
+      draggable
+      pauseOnHover
+      theme="light" />
       {loader ? <ProgressCircular/> : 
       <Grid item xs={12} sm={12} md={6} lg={6} xl={6} margin="auto">
         <Stack
@@ -114,24 +140,14 @@ function SignUp() {
                   title="Sign Up"
                 ></Button>
                 <Button
-                  onClick={signUpUser}
+                  onClick={loginPage}
                   title="Login"
                 ></Button>
               </Box>
             </Stack>
           </Box>
         </Stack>
-        <ToastContainer
-      position="top-right"
-      autoClose={1000}
-      hideProgressBar={false}
-      newestOnTop={false}
-      closeOnClick
-      rtl={false}
-      pauseOnFocusLoss
-      draggable
-      pauseOnHover
-      theme="light" />
+    
       </Grid>
   }
     </Grid>
